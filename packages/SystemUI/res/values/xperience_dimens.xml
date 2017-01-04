@@ -48,4 +48,8 @@
     <!-- Height of the battery icon in the status bar. -->
     <dimen name="status_bar_battery_icon_height_landscape">12.5dp</dimen>
     <dimen name="status_bar_battery_icon_width_landscape">18dp</dimen>
+
+    <!-- Network traffic monitor -->
+    <dimen name="net_traffic_multi_text_size">8dp</dimen>
+    <dimen name="net_traffic_txt_img_padding">2dp</dimen>
 </resources>
