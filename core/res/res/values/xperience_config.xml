@@ -56,4 +56,7 @@
 
     <!-- Whether device has dash charging support -->
     <bool name="config_hasDashCharger">false</bool>
+
+    <!-- Whether device has ChargeTurbo charging support all xiaomis for example -->
+    <bool name="config_hasChargeTurbo">false</bool>
 </resources>
