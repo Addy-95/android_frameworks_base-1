@@ -250,6 +250,7 @@ public class VolumeDialogImpl implements VolumeDialog,
     private boolean mHasSeenODICaptionsTooltip;
     private ViewStub mODICaptionsTooltipViewStub;
     private View mODICaptionsTooltipView = null;
+    private boolean mHasAlertSlider;
     private boolean mLeftVolumeRocker;
 
     private final boolean mUseBackgroundBlur;
@@ -277,6 +278,7 @@ public class VolumeDialogImpl implements VolumeDialog,
             mContext.getResources().getInteger(R.integer.config_dialogHideAnimationDurationMs);
         mUseBackgroundBlur =
             mContext.getResources().getBoolean(R.bool.config_volumeDialogUseBackgroundBlur);
+        mHasAlertSlider = mContext.getResources().getBoolean(com.android.internal.R.bool.config_hasAlertSlider);
         mLeftVolumeRocker = mContext.getResources().getBoolean(R.bool.config_audioPanelOnLeftSide);
 
         if (mUseBackgroundBlur) {
@@ -817,20 +819,24 @@ public class VolumeDialogImpl implements VolumeDialog,
         ((LinearLayout) mRingerDrawerContainer.findViewById(R.id.volume_drawer_options))
                 .setOrientation(isLandscape() ? LinearLayout.HORIZONTAL : LinearLayout.VERTICAL);
 
-        mSelectedRingerContainer.setOnClickListener(view -> {
-            if (mIsRingerDrawerOpen) {
-                hideRingerDrawer();
-            } else {
-                showRingerDrawer();
-            }
-        });
+        if (!mHasAlertSlider) {
 
-        mRingerDrawerVibrate.setOnClickListener(
-                new RingerDrawerItemClickListener(RINGER_MODE_VIBRATE));
-        mRingerDrawerMute.setOnClickListener(
-                new RingerDrawerItemClickListener(RINGER_MODE_SILENT));
-        mRingerDrawerNormal.setOnClickListener(
-                new RingerDrawerItemClickListener(RINGER_MODE_NORMAL));
+            mSelectedRingerContainer.setOnClickListener(view -> {
+                if (mIsRingerDrawerOpen) {
+                    hideRingerDrawer();
+                } else {
+                    showRingerDrawer();
+                }
+            });
+
+            mRingerDrawerVibrate.setOnClickListener(
+                    new RingerDrawerItemClickListener(RINGER_MODE_VIBRATE));
+            mRingerDrawerMute.setOnClickListener(
+                    new RingerDrawerItemClickListener(RINGER_MODE_SILENT));
+            mRingerDrawerNormal.setOnClickListener(
+                    new RingerDrawerItemClickListener(RINGER_MODE_NORMAL));
+
+        }
 
         final int unselectedColor = Utils.getColorAccentDefaultColor(mContext);
         final int selectedColor = Utils.getColorAttrDefaultColor(
