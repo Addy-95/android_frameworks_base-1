@@ -243,8 +243,8 @@ public class MobileMappings {
             config.showRsrpSignalLevelforLTE =
                     res.getBoolean(R.bool.config_showRsrpSignalLevelforLTE);
             config.hideNoInternetState = res.getBoolean(R.bool.config_hideNoInternetState);
-            config.showVolteIcon = res.getBoolean(R.bool.config_display_volte);
-            config.showVowifiIcon = res.getBoolean(R.bool.config_display_vowifi);
+            config.showVolteIcon = true;
+            config.showVowifiIcon = true;
             if ( config.alwaysShowNetworkTypeIcon ) {
                 config.hideLtePlus = false;
             }
