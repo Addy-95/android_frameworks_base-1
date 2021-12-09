@@ -162,7 +162,7 @@ public class BatteryStatus {
                 return CHARGING_FAST;
         }
 
-       if (isChargeTurbo) {
+       if (chargeTurboStatus) {
               return CHARGING_FAST;
         }
 
