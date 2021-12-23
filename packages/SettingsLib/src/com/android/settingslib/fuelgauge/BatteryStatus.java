@@ -162,10 +162,6 @@ public class BatteryStatus {
                 return CHARGING_FAST;
         }
 
-       if (chargeTurboStatus) {
-              return CHARGING_FAST;
-        }
-
         final int slowThreshold = context.getResources().getInteger(
                 R.integer.config_chargingSlowlyThreshold);
         final int fastThreshold = context.getResources().getInteger(
