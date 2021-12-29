@@ -177,7 +177,7 @@ public class BatteryStatus {
         }
 
        if (chargeTurboStatus) {
-              return CHARGING_FAST;
+              return CHARGING_CHARGE_TURBO;
         }
 
         final int slowThreshold = context.getResources().getInteger(
@@ -185,7 +185,6 @@ public class BatteryStatus {
         final int fastThreshold = context.getResources().getInteger(
                 R.integer.config_chargingFastThreshold);
         return dashChargeStatus ? CHARGING_DASH :
-                chargeTurboStatus ? CHARGING_CHARGE_TURBO :
                 maxChargingWattage <= 0 ? CHARGING_UNKNOWN :
                 maxChargingWattage < slowThreshold ? CHARGING_SLOWLY :
                         maxChargingWattage > fastThreshold ? CHARGING_FAST :
