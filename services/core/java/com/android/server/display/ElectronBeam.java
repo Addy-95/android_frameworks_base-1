@@ -637,8 +637,13 @@ final class ElectronBeam implements ScreenStateAnimator {
         if (mSurfaceControl != null) {
             mSurfaceLayout.dispose();
             mSurfaceLayout = null;
-            new Transaction().remove(mSurfaceControl).apply();
-            mSurface.release();
+            SurfaceControl.openTransaction();
+            try {
+                mSurfaceControl.remove();
+                mSurface.release();
+            } finally {
+                SurfaceControl.closeTransaction();
+            }
             mSurfaceControl = null;
             mSurfaceVisible = false;
             mSurfaceAlpha = 0f;
